@@ -79,7 +79,7 @@ exports.getRec = function (req, res) {
 
 exports.getToken = function (req, res) {
     
-     console.log('findone') ;
+   //  console.log('findone') ;
      
      let email = req.params.email ;
       
@@ -108,7 +108,7 @@ exports.getToken = function (req, res) {
     from: 'hardeep@ifishtour.com',
     to: email,
     subject: 'Opimus Minds Pin Code',
-    text: 'Please enter this pin code : ' + pin
+    text: 'To access,Please enter this pin code : ' + pin
     }; 
 
     var transporter =  nodemailer.createTransport({
