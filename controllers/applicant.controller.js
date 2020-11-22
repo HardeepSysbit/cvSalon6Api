@@ -104,37 +104,9 @@ exports.getToken = function (req, res) {
      let pin =  token.compact();
      pin = pin.slice(-6).replace('_','X').replace('-','A').toUpperCase() ;
 
-    var mailOptions = {
-    from: 'hardeep@ifishtour.com',
-    to: email,
-    subject: 'Opimus Minds Pin Code',
-    text: 'To access,Please enter this pin code : ' + pin
-    }; 
-
-    var transporter =  nodemailer.createTransport({
-        host: 'mail.ifishtour.com',
-        port: 465,
-        secure: true, // use TLS
-        auth: {
-            user: 'hardeep@ifishtour.com',
-            pass: '1711Deep'
-        },
-        tls: {
-          // do not fail on invalid certs
-          rejectUnauthorized: false
-        }
-      })
-
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      }); 
-    
-      console.log(token.compact()) ;
+   
+  
+   //   console.log(token.compact()) ;
 
   //  res.send(token.compact());
         res.send({token: token.compact(), pin: pin, err: '',_id: id, adminLevel: adminLevel});

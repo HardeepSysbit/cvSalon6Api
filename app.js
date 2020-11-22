@@ -13,6 +13,10 @@ const trainer = require('./routes/trainer.route'); // Imports routes for the tra
 const applicant = require('./routes/applicant.route'); // Imports routes for the trainers
 const app = express();
 const path = require('path');
+const https = require('https');
+
+const fs = require('fs');
+
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -170,9 +174,23 @@ app.use('/applicants', applicant);
 
 let port = 3000;
 
-app.listen(port, () => {
-    console.log('Server is up and running on port numner ' + port);
+ // Listen both http & https ports
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/cvsalon.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/cvsalon.com/fullchain.pem'),
+}, app);
+
+
+
+httpsServer.listen(3000, () => {
+    console.log('HTTPS Server running on port 3000');
 });
+
+
+
+// app.listen(port, () => {
+//    console.log('Server is up and running on port numner ' + port);
+//});
 
 
 
