@@ -11,6 +11,10 @@ const product = require('./routes/product.route'); // Imports routes for the pro
 const agent = require('./routes/agent.route'); // Imports routes for the agents
 const trainer = require('./routes/trainer.route'); // Imports routes for the trainers
 const applicant = require('./routes/applicant.route'); // Imports routes for the trainers
+
+// new for lms
+const lms = require('./routes/lms.route'); // Imports routes for the trainers
+
 const app = express();
 const path = require('path');
 const https = require('https');
@@ -102,6 +106,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/agents', agent);
 app.use('/trainers', trainer);
 app.use('/applicants', applicant);
+app.use('/lms', lms);
 /* app.get('/token', (req, res) => {
       
      const jwt = require('njwt')
